@@ -19,7 +19,6 @@ const App: React.FC = () => {
 
     const mergeIntoMaster = (data: any) => {
       if (!data || typeof data !== 'object') return;
-      // 兼容所有可能的旧版字段名
       const uts = data.utEntries || data.uts || data.ut || [];
       const bonds = data.bondEntries || data.bonds || data.bond || [];
       const generics = data.genericEntries || data.generics || data.generic || [];
@@ -35,7 +34,6 @@ const App: React.FC = () => {
       }
     };
 
-    // 扫描所有 LocalStorage Key 找回 13 号数据
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key) {
@@ -103,7 +101,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row font-sans">
+    <div className="min-h-screen flex flex-col md:flex-row font-sans text-slate-200">
       <aside className="w-full md:w-72 bg-slate-950/80 backdrop-blur-xl border-r border-white/5 p-8 flex flex-col gap-8 z-20">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
@@ -121,9 +119,9 @@ const App: React.FC = () => {
           <NavItem active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>} label="智能概览" />
           <NavItem active={activeTab === 'input'} onClick={() => setActiveTab('input')} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>} label="录入数据" />
           <NavItem active={activeTab === 'history'} onClick={() => setActiveTab('history')} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>} label="历史明细" />
-          <NavItem active={activeTab === 'reports'} onClick={() => setActiveTab('reports'} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>} label="汇点报告" />
+          <NavItem active={activeTab === 'reports'} onClick={() => setActiveTab('reports')} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>} label="汇点报告" />
           <div className="h-px bg-white/5 my-2"></div>
-          <NavItem active={activeTab === 'sync'} onClick={() => setActiveTab('sync'} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>} label="同步中心" />
+          <NavItem active={activeTab === 'sync'} onClick={() => setActiveTab('sync')} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>} label="同步中心" />
         </nav>
 
         <div className="mt-auto bg-white/5 rounded-2xl p-5 border border-white/5">
